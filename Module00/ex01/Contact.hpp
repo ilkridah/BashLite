@@ -20,7 +20,7 @@ class Contact {
 		std::string	nickname;
 		std::string number;
 		std::string Darkest_secret;
-
+		
 		void	print_string(std::string str);
 };
 

@@ -3,7 +3,7 @@ SRC				= main.cpp Contact.cpp Book.cpp
 OBJ				= $(SRC:.cpp=.o)	
 
 C++				= c++
-CFLAGS			= -std=c++98 -pedantic -Wall -Wextra -Werror
+CFLAGS			=  -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 
 all:	$(NAME)

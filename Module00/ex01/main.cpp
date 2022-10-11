@@ -2,28 +2,32 @@
 #include "Contact.hpp"
 #include "Book.hpp"
 
-void head_printer(void){
+std::string header(void){
 
-		std::cout << " ******************************************** " << std::endl;
-		std::cout << "|              Awesome PhoneBook             | " << std::endl;
-		std::cout << "|             ADD, SEARCH, EXIT              | " << std::endl;
-		std::cout << " ********************************************  " << std::endl;
+	std::string input;
+	std::cout << " ******************************************** " << std::endl;
+	std::cout << "|              Awesome PhoneBook             | " << std::endl;
+	std::cout << "|             ADD, SEARCH, EXIT              | " << std::endl;
+	std::cout << " ********************************************  " << std::endl;
+	if (!std::getline(std::cin, input))
+		exit(1);
+	return input;
 }
 
 void	search_contacts(Book phone){
-	int	input;
 
+	std::string	input;
 	phone.display_phonebook();
 	while (ON)
 	{
-		if (std::cin.eof())
-			OFF;
 		std::cout << "Enter an index: ";
-		std::cin >> input;
-		if (input > 0 && input < 9)
+		if (!std::getline(std::cin,input))
+			exit(1);
+		int i = atoi(input.c_str());
+		if (i > 0 && i < 9)
 		{
-			phone.display_contact(input - 1);
-			OFF;
+			phone.display_contact(i - 1);
+			return;
 		}
 	} 
 }
@@ -37,21 +41,18 @@ int	main(void)
 	
 	while (ON)
 	{
-		if (std::cin.eof())
-			OFF;
 		if (i == 8)
 			i = 0;
-		head_printer();
-		std::getline(std::cin, input);
+		input = header();
 		if (input == "ADD")
 		{
 			phone.fill_contact(i);
 			i++;
 		}
-		if (input == "SEARCH")
+		else if (input == "SEARCH")
 			search_contacts(phone);
-		if (input == "EXIT")
-			OFF;
+		else if (input == "EXIT")
+			break;
 	}
 	return (0);
 }
