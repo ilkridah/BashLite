@@ -3,18 +3,26 @@
 #include <stdlib.h>
 #include "Contact.hpp"
 
+std::string Contact::mygetline()
+{
+	std::string var;
+	if(!std::getline(std::cin, var))
+		exit(1);
+	return var;	
+}
+
 void	Contact::fill_contact(void)
 {
 	std::cout << "> First name: ";
-	std::getline(std::cin, firstname); 
+	firstname = mygetline();
 	std::cout << "> Last name: ";
-	std::getline(std::cin, lastname);
+	lastname = mygetline();
 	std::cout << "> Nickname: ";
-	std::getline(std::cin, nickname);
+	nickname = mygetline();
 	std::cout << "> Number: ";
-	std::getline(std::cin, number); 
+	number = mygetline(); 
 	std::cout << "> Darkest_Secret: ";
-	std::getline(std::cin, Darkest_secret);
+	Darkest_secret = mygetline();
 }
 
 void	Contact::print_string(std::string str)

@@ -9,8 +9,7 @@ std::string header(void){
 	std::cout << "|              Awesome PhoneBook             | " << std::endl;
 	std::cout << "|             ADD, SEARCH, EXIT              | " << std::endl;
 	std::cout << " ********************************************  " << std::endl;
-	if (!std::getline(std::cin, input))
-		exit(1);
+	input = Contact::mygetline();
 	return input;
 }
 

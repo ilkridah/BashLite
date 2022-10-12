@@ -12,6 +12,7 @@ class Book {
 		void	display_phonebook(void);
 		void	display_contact(int idx);
 		void	fill_contact(int idx);
+
 	private:
 		Contact contact[8];
 };
