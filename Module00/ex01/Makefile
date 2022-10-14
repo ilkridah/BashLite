@@ -1,5 +1,5 @@
 NAME			= Phonebook
-SRC				= main.cpp Contact.cpp Book.cpp
+SRC				= main.cpp Contact.cpp Phonebook.cpp
 OBJ				= $(SRC:.cpp=.o)	
 
 C++				= c++
@@ -8,7 +8,7 @@ RM				= rm -f
 
 all:	$(NAME)
 
-$(NAME):		$(OBJ) Contact.hpp book.hpp
+$(NAME):		$(OBJ) Contact.hpp Phonebook.hpp
 				$(C++) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:

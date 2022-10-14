@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "Contact.hpp"
 
-std::string Contact::mygetline()
+std::string mygetline()
 {
 	std::string var;
 	if(!std::getline(std::cin, var))

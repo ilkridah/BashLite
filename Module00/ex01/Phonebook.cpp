@@ -1,7 +1,7 @@
 
-#include "Book.hpp"
+#include "Phonebook.hpp"
 
-void	Book::display_phonebook(void)
+void	Phonebook::display_phonebook(void)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -10,12 +10,13 @@ void	Book::display_phonebook(void)
 	}
 }
 
-void	Book::fill_contact(int idx)
+void	Phonebook::fill_contact(int idx)
 {
 	contact[idx].fill_contact();
 }
 
-void	Book::display_contact(int idx)
+void	Phonebook::display_contact(int idx)
 {
 	contact[idx].display_contact();
 }
+

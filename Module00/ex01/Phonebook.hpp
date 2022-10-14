@@ -1,13 +1,13 @@
 
 
-#ifndef BOOK_HPP
-# define BOOK_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 #include <iomanip>
 #include <iostream>
 #include "Contact.hpp"
 
-class Book {
+class Phonebook {
 	public:
 		void	display_phonebook(void);
 		void	display_contact(int idx);

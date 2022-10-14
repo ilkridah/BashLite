@@ -1,19 +1,21 @@
 
 #include "Contact.hpp"
-#include "Book.hpp"
+#include "Phonebook.hpp"
+
 
 std::string header(void){
 
 	std::string input;
 	std::cout << " ******************************************** " << std::endl;
-	std::cout << "|              Awesome PhoneBook             | " << std::endl;
-	std::cout << "|             ADD, SEARCH, EXIT              | " << std::endl;
-	std::cout << " ********************************************  " << std::endl;
-	input = Contact::mygetline();
+	std::cout << "|              Awesome PhoneBook             |" << std::endl;
+	std::cout << "|             ADD, SEARCH, EXIT              |" << std::endl;
+	std::cout << " ******************************************** " << std::endl;
+	if (!std::getline(std::cin,input))
+		exit(1);
 	return input;
 }
 
-void	search_contacts(Book phone){
+void	search_contacts(Phonebook phone){
 
 	std::string	input;
 	phone.display_phonebook();
@@ -26,18 +28,18 @@ void	search_contacts(Book phone){
 		if (i > 0 && i < 9)
 		{
 			phone.display_contact(i - 1);
-			return;
+			break;
 		}
 	} 
 }
 
 int	main(void)
 {
-	Book		phone;
+	Phonebook	phone;
 	std::string	input;
 	int			i;
 	i = 0;
-	
+	 
 	while (ON)
 	{
 		if (i == 8)
