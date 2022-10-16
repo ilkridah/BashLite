@@ -2,17 +2,17 @@
 
  Zombie::Zombie()
 {
-    name = "Zombie";
+    name = "Horde";
 }
 
 Zombie::Zombie(std::string name)
 {
-    std::cout << "Zombie created" << std::endl;
+    std::cout << "Horde created" << std::endl;
 }
 
 Zombie::~Zombie()
 {
-    std::cout << "Zombie destroyed" << std::endl;
+    std::cout << "Horde destroyed" << std::endl;
 }
 
 void Zombie::announce()
