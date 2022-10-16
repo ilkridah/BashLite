@@ -3,10 +3,10 @@
 int main()
 {
     Zombie A = Zombie("stack");
-    Zombie B = newZombie("heap");
+    Zombie *B = newZombie("heap");
 
     A.announce();
-    B.announce();
-    randomchump("chump");
+    (*B).announce();
+    randomChump("chump");
     delete B;
 }
