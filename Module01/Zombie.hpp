@@ -6,10 +6,13 @@
 class Zombie
 {
     private:
-        string::string name;
+        std::string name;
     public:
         Zombie();
         ~Zombie();
         void announce();
-}
+
+    Zombie *newZombie(std::string name);
+    void randomchump(std::string name);
+};
 #endif
