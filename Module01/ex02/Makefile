@@ -1,5 +1,5 @@
-NAME			= megaphone
-SRC				= megaphone.cpp 
+NAME			= main
+SRC				= main.cpp 
 
 CC				= c++
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98	
