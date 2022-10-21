@@ -81,5 +81,6 @@
         "bitset": "cpp",
         "ios": "cpp",
         "locale": "cpp"
-    }
+    },
+    "C_Cpp.dimInactiveRegions": false
 }

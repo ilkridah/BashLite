@@ -27,5 +27,6 @@ class Phonebook {
 	private:
 		Contact contact[8];
 };
+std::string mygetline();	
 
 #endif

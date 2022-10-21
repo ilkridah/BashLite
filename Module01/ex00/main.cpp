@@ -6,7 +6,7 @@ int main()
     Zombie *B = newZombie("heap");
 
     A.announce();
-    (*B).announce();
+    B->announce();
     randomChump("chump");
     delete B;
 }

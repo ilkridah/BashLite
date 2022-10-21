@@ -22,8 +22,7 @@ std::string header(void){
 	std::cout << "|              Awesome PhoneBook             |" << std::endl;
 	std::cout << "|             ADD, SEARCH, EXIT              |" << std::endl;
 	std::cout << " ******************************************** " << std::endl;
-	if (!std::getline(std::cin,input))
-		exit(1);
+	input = mygetline();
 	return input;
 }
 
@@ -34,8 +33,7 @@ void	search_contacts(Phonebook phone){
 	while (ON)
 	{
 		std::cout << "Enter an index: ";
-		if (!std::getline(std::cin,input))
-			exit(1);
+		input = mygetline();
 		int i = atoi(input.c_str());
 		if (i > 0 && i < 9)
 		{
