@@ -20,6 +20,12 @@ std::string mygetline()
 	std::string var;
 	if(!std::getline(std::cin, var))
 		exit(1);
+	while(var.empty())
+	{
+		std::cout << "Please enter a value: ";
+		if(!std::getline(std::cin, var))
+			exit(1);
+	}
 	return var;	
 }
 
