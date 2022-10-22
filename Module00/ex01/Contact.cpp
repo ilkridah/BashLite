@@ -51,7 +51,7 @@ void	Contact::print_string(std::string str)
 	std::cout << str << "|";
 }
 
-void	Contact::display_names(void)
+void	Contact::display_names()
 {
 	print_string(firstname);
 	print_string(lastname);
@@ -61,6 +61,11 @@ void	Contact::display_names(void)
 
 void	Contact::display_contact(void)
 {
+	if(firstname.empty())
+	{
+		std::cout << "Contact is empty" << std::endl;
+		return;
+	}
 	std::cout << "> First name: " << firstname << std::endl;
 	std::cout << "> Last name: " << lastname << std::endl;
 	std::cout << "> Nickname: " << nickname << std::endl;

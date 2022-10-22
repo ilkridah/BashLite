@@ -23,7 +23,7 @@
 class Contact {
 	public:
 		void		fill_contact(void);
-		void		display_names(void);
+		void		display_names();
 		void		display_contact(void);
 
 	private:
