@@ -2,18 +2,17 @@
 #include<iostream>
 #include<fcntl.h>
 #include<unistd.h>
-
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 
-static void	exit_error(char const *error_message)
+ void	exit_error(char const *error_message)
 {
 	std::cerr << "Error: " << error_message << std::endl;
 	exit (EXIT_FAILURE);
 }
 
-static void	is_empty(std::ifstream &infile)
+void	is_empty(std::ifstream &infile)
 {
 	std::string		line;
 
@@ -26,9 +25,10 @@ static void	is_empty(std::ifstream &infile)
 	infile.close();
 }
 
-static void	check_errors(int ac, char **av)
+void	check_errors(int ac, char **av)
 {
 	std::ifstream	infile;
+	std::string		file;
 
 	if (ac != 4)
 		exit_error("bad arguments");
@@ -36,7 +36,8 @@ static void	check_errors(int ac, char **av)
 	if (infile.fail())
 		exit_error("failed to open file");
 	is_empty(infile);
-	if (static_cast<std::string>(av[2]).empty())
+	file = av[1];
+	if (file.empty())
 	{
 		infile.close();
 		exit_error("s1 is empty");
@@ -44,25 +45,12 @@ static void	check_errors(int ac, char **av)
 	infile.close();
 }
 
-static void	replace_line(std::string *line, std::string s1, std::string s2)
-{
-	std::size_t	pos;
-	std::size_t	i;
-
-	i = 0;
-	while ((pos = line->find(s1, i)) != std::string::npos)
-	{
-		line->erase(pos, s1.length());
-		line->insert(pos, s2);
-		i = pos + s2.length();
-	}
-}
-
-static void	search_file(std::ifstream &infile, std::string replace,
-						std::string s1, std::string s2)
+static void	search_file(std::ifstream &infile, std::string replace, std::string s1, std::string s2)
 {
 	std::string		line;
 	std::ofstream	outfile;
+	std::size_t		pos;
+	std::size_t		i;
 
 	outfile.open(replace.c_str());
 	if (outfile.fail())
@@ -71,7 +59,15 @@ static void	search_file(std::ifstream &infile, std::string replace,
 	{
 		std::getline(infile, line);
 		if (line.find(s1) != std::string::npos)
-			replace_line(&line, s1, s2);
+			{
+				i = 0;
+				while((pos = line.find(s1, i)) != std::string::npos)
+				{
+					line.erase(pos, s1.length());
+					line.insert(pos, s2);
+					i = pos + s2.length();
+				}
+			}
 		if (!infile.eof())
 			outfile << line << std::endl;
 	}
@@ -86,7 +82,7 @@ int	main(int ac, char **av)
 	infile.open(av[1]);
 	if (infile.fail())
 		exit_error("failed to open file");
-	replace = static_cast<std::string>(av[1]) + ".replace";
+	replace = (std::string)av[1] + ".replace";
 	search_file(infile, replace, av[2], av[3]);
 	infile.close();
 	return (0);
