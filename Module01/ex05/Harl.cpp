@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/25 04:02:08 by ilkridah          #+#    #+#             */
+/*   Updated: 2022/10/25 04:02:36 by ilkridah         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "Harl.hpp"
 
@@ -42,14 +54,17 @@ void	Harl::complain(std::string level)
 {
 	int			i;
 	std::string	str[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void		(Harl::*func[4])(void) = {&Harl::_debug, &Harl::_info,
-										&Harl::_warning, &Harl::_error};
+	void(Harl::*f[4])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 
 	i = 0;
 	while (i < 4)
 	{
 		if (level == str[i])
-			(this->*func[i])();
+		{
+			(this->*f[i])();
+			return ;
+		}
 		i++;
 	}
+	std::cout << "Invalid level" << std::endl;
 }

@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/25 04:01:54 by ilkridah          #+#    #+#             */
+/*   Updated: 2022/10/25 04:02:00 by ilkridah         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include<iostream>
-#include<fcntl.h>
-#include<unistd.h>
+
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
