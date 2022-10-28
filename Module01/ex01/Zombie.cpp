@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 04:01:01 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/10/25 04:01:07 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:27:40 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
  Zombie::Zombie()
 {
-    name = "Horde";
+    _name = "Horde";
 }
 
 Zombie::Zombie(std::string name)
@@ -29,10 +29,10 @@ Zombie::~Zombie()
 
 void Zombie::announce()
 {
-    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void Zombie::setName(std::string name)
 {
-    this->name = name;
+    _name = name;
 }

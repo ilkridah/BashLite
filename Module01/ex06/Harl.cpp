@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 04:02:50 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/10/25 04:02:51 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:31:36 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Harl::~Harl(void)
 	return ;
 }
 
-void	Harl::debug(void)
+void	Harl::_debug(void)
 {
 	std::cout << "[DEBUG]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple";
@@ -31,7 +31,7 @@ void	Harl::debug(void)
 	std::cout << "I really do !" << std::endl;
 }
 
-void	Harl::info(void)
+void	Harl::_info(void)
 {
 	std::cout << "[INFO]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money." << std::endl;
@@ -39,7 +39,7 @@ void	Harl::info(void)
 	std::cout << "If you did, I wouldn't be asking for more !" << std::endl;
 }
 
-void	Harl::warning(void)
+void	Harl::_warning(void)
 {
 	std::cout << "[WARNING]" << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free. " << std::endl;
@@ -47,7 +47,7 @@ void	Harl::warning(void)
 	std::cout << "since last month." << std::endl;
 }
 
-void	Harl::error(void)
+void	Harl::_error(void)
 {
 	std::cout << "[ERROR]" << std::endl;
 	std::cout << "This is unacceptable, I want to speak to the manager now.";
@@ -65,13 +65,13 @@ void	Harl::complain(std::string level)
 	switch (i)
 	{
 		case 0:
-			this->debug();
+			_debug();
 		case 1:
-			this->info();
+			_info();
 		case 2:
-			this->warning();
+			_warning();
 		case 3:
-			this->error();
+			_error();
 			break ;
 		default:
 			std::cout << "[Probably complaining about insignificant problems]";
