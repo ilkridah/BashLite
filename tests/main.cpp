@@ -6,9 +6,8 @@ class xxx
         int a = 1008;
         int b = 2905;
   
-    xxx operator + (xxx uu)
+    xxx operator + (xxx &uu)
     {
-
         xxx temp;
         temp.a = a + uu.b;
         return temp;

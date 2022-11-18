@@ -2,7 +2,7 @@
 #define FIXED_HPP
 
 #include <iostream>
-
+#include <math.h>
 class Fixed {
     public:
         Fixed();
@@ -11,6 +11,9 @@ class Fixed {
         Fixed(const float n);
         ~Fixed();
         Fixed &operator=(const Fixed &copy);
+        Fixed &operator++();
+        Fixed &operator--();
+        Fixed &operator /();
         int getRawBits(void) const;
         void setRawBits(int const raw);
         float toFloat(void) const;
@@ -19,3 +22,4 @@ class Fixed {
         int _fixedPointValue;
         static const int _fractionalBits = 8;
 };
+#endif
