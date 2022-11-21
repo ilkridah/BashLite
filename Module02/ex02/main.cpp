@@ -1,41 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/21 06:55:51 by ilkridah          #+#    #+#             */
+/*   Updated: 2022/11/21 06:55:52 by ilkridah         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
-static void	show(std::string msg, Fixed fixed)
-{
-	std::cout << msg << fixed << std::endl;
-}
-
-int	main(void)
-{
-	Fixed	a(5.5f);
-	Fixed	b(42);
-	Fixed	c(a);
-
-	show("a = ", a);
-	show("b = ", b);
-	show("c = ", c);
-
-	c = b / a;
-	show("b / a = ", c);
-	c = b - a;
-	show("b - a = ", c);
-
-	show("++c = ", ++c);
-	show("c-- = ", c--);
-	show("c = ", c);
-
-	Fixed const	a_const(178);
-	Fixed const	b_const(35);
-	show("const min: ", Fixed::min(a_const, b_const));
-
-	show("a = ", a);
-	show("c = ", c);
-	show("a == c: ", a == c);
-	show("a != c: ", a != c);
-
-	c = a;
-	show("a == c: ", a == c);
-	show("a != c: ", a != c);
-
-	return (0);
+int main( void ) {
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
 }
