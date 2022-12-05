@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 06:06:53 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/11/18 06:06:54 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:42:23 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,10 @@ int Fixed::toInt(void) const
 float Fixed::toFloat(void) const
 {
     return (float)this->_fixedPointValue / (1 << this->_fractionalBits);
+}
+
+std::ostream &operator << (std::ostream & os, const Fixed &fixed)
+{
+    os << fixed.toFloat();
+    return os;
 }

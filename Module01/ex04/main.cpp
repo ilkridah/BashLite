@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 04:01:54 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/10/25 04:02:00 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:54:00 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void	search_file(std::ifstream &infile, std::string replace, std::string 
 					line.erase(pos, s1.length());
 					line.insert(pos, s2);
 					i = pos + s2.length();
+					std:: cout << ">> "<< pos << "<< " <<std::endl;
 				}
 			}
 		if (!infile.eof())

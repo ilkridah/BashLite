@@ -1,54 +1,44 @@
+
 #include <iostream>
 
-class xxx
+class demo_op
 {
+    private:
+        int _value;
+        int bits = 8;
     public:
-        int a = 1008;
-        int b = 2905;
-  
-    xxx operator + (xxx &uu)
-    {
-        xxx temp;
-        temp.a = a + uu.b;
-        return temp;
-    }
-    bool operator == (xxx uu)
-    {
-        if (a == uu.a && b == uu.b)
-            return true;
-        else
-            return false;
-    }
-    bool operator < (xxx uu)
-    {
-        if (a < uu.a && b < uu.b)
-            return true;
-        else
-            return false;
-    }
+        void input()
+        {
+            std::cout << "enter value: ";
+            std::cin >> _value;
+        }
+        void operator +(int x)
+        {
+            _value = _value + x;
+        }
 
+        void operator -(int x)
+        {
+            _value = _value - x;
+        }
+        void toInt(float value)
+        {
+            this->_value = _value >> bits;
+            std::cout << "value: " << _value << std::endl;
+        }
+        void display()
+        {
+            std::cout << "value is: " << _value << "\n";
+        }
 };
 
-    int main()
-    {
-        xxx obj1,obj2,obj3;
+int main()
+{
+    demo_op obj;
+    float x;
 
-        obj3 = obj1 + obj2;
-        std::cout << obj3.b << std::endl;
-        if( obj1 < obj2)
-        {
-            std::cout << "obj1 is less than obj2" << std::endl;
-        }
-        else
-        {
-            std::cout << "obj1 is greater than obj2" << std::endl;
-        }
-        if(obj1 == obj2)
-        {
-            std::cout << "Equal" << std::endl;
-        }
-        else
-        {
-            std::cout << "Not Equal" << std::endl;
-        }
-    }
+    std::cin >> x;
+    obj.toInt(x);
+    // obj.display();
+    return 0;
+}

@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 04:01:05 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/10/25 18:27:05 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:28:27 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ZOMBIE_HPP
 
 #include<iostream>
+#include<limits.h>
 class Zombie
 {
     private:

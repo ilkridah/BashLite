@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 06:55:41 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/11/21 06:55:42 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:55:34 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Fixed::Fixed(const float parameter)
     std::cout << "Float Constructor called\n";
     _fixedPointValue = roundf(parameter * (1 << _fractionalBits));
 }
+
 Fixed::~Fixed()
 {
     std::cout << "Destructor called\n";
@@ -72,56 +73,56 @@ std::ostream &operator <<(std::ostream &os, const Fixed &fixed)
     return (os);
 }
 
-bool Fixed::operator < (const Fixed &p) const
+bool Fixed::operator < (const Fixed &copy) const
 {
-    return (this->_fixedPointValue < p._fixedPointValue);
+    return (this->_fixedPointValue < copy._fixedPointValue);
 }
 
-bool Fixed::operator > (const Fixed &p) const
+bool Fixed::operator > (const Fixed &copy) const
 {
-    return (this->_fixedPointValue > p._fixedPointValue);
+    return (this->_fixedPointValue > copy._fixedPointValue);
 }
-bool Fixed::operator >= (const Fixed &p) const
+bool Fixed::operator >= (const Fixed &copy) const
 {
-    return (this->_fixedPointValue >= p._fixedPointValue);
+    return (this->_fixedPointValue >= copy._fixedPointValue);
 }
-bool Fixed::operator <= (const Fixed &p) const
+bool Fixed::operator <= (const Fixed &copy) const
 {
-    return (this->_fixedPointValue <= p._fixedPointValue);
-}
-
-bool Fixed::operator == (const Fixed &p) const
-{
-    return (this->_fixedPointValue == p._fixedPointValue);
-}
-bool Fixed::operator != (const Fixed &p) const
-{
-    return (this->_fixedPointValue != p._fixedPointValue);
+    return (this->_fixedPointValue <= copy._fixedPointValue);
 }
 
-Fixed Fixed::operator+ (const Fixed &p)
+bool Fixed::operator == (const Fixed &copy) const
+{
+    return (this->_fixedPointValue == copy._fixedPointValue);
+}
+bool Fixed::operator != (const Fixed &copy) const
+{
+    return (this->_fixedPointValue != copy._fixedPointValue);
+}
+
+Fixed Fixed::operator+ (const Fixed &copy)
 {
     Fixed ret;
-    ret._fixedPointValue =this->_fixedPointValue + p._fixedPointValue;
+    ret._fixedPointValue =this->_fixedPointValue + copy._fixedPointValue;
     return ret;
 
 }
-Fixed Fixed::operator- (const Fixed &p)
+Fixed Fixed::operator- (const Fixed &copy)
 {
     Fixed ret;
-    ret._fixedPointValue=this->_fixedPointValue - p._fixedPointValue;
+    ret._fixedPointValue=this->_fixedPointValue - copy._fixedPointValue;
     return ret;
 }
-Fixed Fixed::operator* (const Fixed &p)
+Fixed Fixed::operator* (const Fixed &copy)
 {
     Fixed ret;
-    ret._fixedPointValue=roundf(this->_fixedPointValue * p._fixedPointValue)/(1 << _fractionalBits);
+    ret._fixedPointValue = roundf(this->_fixedPointValue * copy._fixedPointValue)/(1 << _fractionalBits);
     return ret;
 }
-Fixed Fixed::operator/ (const Fixed &p)
+Fixed Fixed::operator/ (const Fixed &copy)
 {
     Fixed ret;
-    ret._fixedPointValue=roundf(((float)this->_fixedPointValue /p._fixedPointValue) * (1 << _fractionalBits));
+    ret._fixedPointValue=roundf(((float)this->_fixedPointValue /copy._fixedPointValue) * (1 << _fractionalBits));
     return ret;
 }
 
@@ -133,8 +134,10 @@ Fixed &Fixed::operator++(void)
 
 Fixed Fixed::operator++(int)
 {
+    Fixed ret;
+    ret = *this;
     this->_fixedPointValue++;
-    return *this;
+    return (ret);
 }
 Fixed &Fixed::operator--(void)
 {
@@ -144,8 +147,10 @@ Fixed &Fixed::operator--(void)
 
 Fixed Fixed::operator--(int)
 {
+    Fixed ret;
+    ret = *this;
     this->_fixedPointValue--;
-    return *this;
+    return (ret);
 }
 
  Fixed &Fixed::min(Fixed &a, Fixed &b)

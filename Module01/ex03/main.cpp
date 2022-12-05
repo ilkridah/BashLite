@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 04:01:40 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/10/25 17:30:25 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/28 20:40:08 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int main()
         club.setType("some other type of club");
         jim.attack();
     }
+    return 0;
 }

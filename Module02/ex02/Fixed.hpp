@@ -6,7 +6,7 @@
 /*   By: ilkridah <ilkridah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 06:55:47 by ilkridah          #+#    #+#             */
-/*   Updated: 2022/11/21 06:55:48 by ilkridah         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:35:49 by ilkridah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ class Fixed
         int getRawBits(void) const;
         void setRawBits(int const raw);
         //op
-        bool operator < (const Fixed &p) const;
-        bool operator > (const Fixed &p) const;
-        bool operator >= (const Fixed &p) const;
-        bool operator <= (const Fixed &p) const;
-        bool operator == (const Fixed &p) const;
-        bool operator != (const Fixed &p) const;
+        bool operator < (const Fixed &copy) const;
+        bool operator > (const Fixed &copy) const;
+        bool operator >= (const Fixed &copy) const;
+        bool operator <= (const Fixed &copy) const;
+        bool operator == (const Fixed &copy) const;
+        bool operator != (const Fixed &copy) const;
         
         //ap
-        Fixed operator+ (const Fixed &p);
-        Fixed operator- (const Fixed &p);
-        Fixed operator* (const Fixed &p);
-        Fixed operator/ (const Fixed &p);
+        Fixed operator+ (const Fixed &copy);
+        Fixed operator- (const Fixed &copy);
+        Fixed operator* (const Fixed &copy);
+        Fixed operator/ (const Fixed &copy);
         //io
         Fixed &operator ++(void);
         Fixed operator ++(int);
