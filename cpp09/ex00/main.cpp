@@ -3,7 +3,6 @@
 
 int main(int ac, char **av) {
 
-	/* Error argc */
 	if (ac != 2) {
 		std::cerr << "Invalid number of arguments. Usage : ./bitcoin input.txt" << std::endl;
 		return (1);

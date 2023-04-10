@@ -1,110 +1,78 @@
-//
-// Created by Lowell Zima on 3/18/23.
-//
-
 #include<iostream>
 #include<cmath>
 #include<stack>
 #include<climits>
 
-int scanNum(char ch){
-	int value;
-	value = ch;
-	return int(value - '0');
-}
-
-int isOperand(char c) {
-	if(c >= '0' && c <= '9')
-		return (1);
-	return (-1);
-}
-
-int isOperator(char op) {
-	if (op == '+' || op == '-' || op == '*' || op == '/') {
-		return (1);
-	}
-	return (-1);
-}
-
-int operation(int a , int b, char op)
+int is_operator(char op)
 {
-	if (op == '+')
-		return (b + a);
-	if (op == '-')
-		return (b - a);
-	if (op == '*')
-		return (b * a);
-	if (op == '/')
-		return (b / a);
-	return (INT_MIN);
+    if(op == '+' || op == '-' || op == '*' || op == '/')
+        return(1);
+    return (-1);
 }
 
-int bad_input(char *s)
+int ft_operators(int x, int y, char op)
 {
-	int t = 0;
-	int digit = 0;
-	int op = 0;
-
-	for (size_t i = 0; i < strlen(s); i++)
-	{
-		if (s[i] == ' '){
-			t = 0;
-			continue;
-		}
-		if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/') {
-			op++;
-			continue;
-		}
-		if (std::isdigit(s[i])) {
-			t++;
-			digit++;
-			if (t == 2) {
-				return (1);
-			}
-		}
-		else
-			return (1);
-	}
-	if ((digit - 1) != op) {
-		return (1);
-	}
-	return (0);
+    if (op == '+')
+        return(y + x);
+    if (op == '-')
+        return(y - x);
+    if (op == '*')
+        return(y * x);
+    if (op == '/'){
+        if(x == 0)
+        {
+            std::cout << "Error 120" << std::endl;
+            exit(1);
+        }
+        return(y / x);
+    }
+    return (0);
 }
 
-int calculate(std::string input){
-	int a, b;
-	std::stack<int> stk;
-	std::string::iterator it;
-
-	for(it = input.begin(); it != input.end(); it++)
-	{
-		if (*it == ' '){
-			continue;
-		}
-		if(isOperator(*it) != -1 ){
-			a = stk.top();
-			stk.pop();
-			b = stk.top();
-			stk.pop();
-			stk.push(operation(a, b, *it));
-		}
-		else if(isOperand(*it) > 0){
-			stk.push(scanNum(*it));
-		}
-	}
-	return stk.top();
-}
 
 int main(int ac, char **av)
 {
-	if (ac != 2) {
-		std::cout << "Usage: one arg to rule them all 👁 and in the darkness bind them" << std::endl;
-		return (1);
-	}
-	if (bad_input(av[1])) {
-		std::cout << "Error" << std::endl;
-		return (0);
-	}
-	int result = calculate(av[1]);
-	std::cout << result << std::endl;
+    int x ;
+    int y ;
+    std::string in;
+    std::stack<int> st;
+    std::string::iterator iter;
+    int res;
+    
+    if(av[1])
+        in  = av[1];
+    if(ac == 1 || in.empty() || !in.find_first_not_of("0123456789*/+-"))
+    {
+        std::cout << "Error" << std::endl;
+        return (0);
+    }
+      
+    for(iter = in.begin(); iter != in.end(); iter++)
+    {
+        if(*iter  == ' ')
+            continue;
+        if(is_operator(*iter) != -1)
+        {
+            if(st.size() < 2)
+            {
+                std::cout << "Error 122" << std::endl;
+                exit(1);
+            }
+            x  = st.top();
+            st.pop();
+            y = st.top();             
+            st.pop();
+            st.push(ft_operators(x, y, *iter));
+        }
+        else if(isdigit(*iter))
+                st.push(*iter - '0');
+    }
+    if(st.size() > 1)
+    {
+        std::cout << "Error 124" << std::endl;
+        exit(1);
+    }
+    res = st.top();
+    std::cout << res << std::endl;
+    return (0);
 }

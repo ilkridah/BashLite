@@ -1,6 +1,3 @@
-//
-// Created by Lowell Zima on 3/18/23.
-//
 
 #include<iostream>
 #include<cmath>
@@ -10,11 +7,13 @@
 #include<ctime>
 
 
-int bad_input(char *s)
+int ft_error(char *s)
 {
 	for (size_t i = 0; i < strlen(s); i++)
+	{
 		if (!std::isdigit(s[i]))
 			return(1);
+	}
 	return(0);
 }
 
@@ -26,7 +25,7 @@ int main(int ac, char **av)
 		return (1);
 	}
 	for (int i = 1; i < ac; i++){
-		if(bad_input(av[i])){
+		if(ft_error(av[i])){
 			std::cout << "Bad input" << std::endl;
 			return (1);
 		}
@@ -84,8 +83,8 @@ int main(int ac, char **av)
 		ssl << *it;
 	}
 	std::cout << "After std::list: \t" << ssl.str() << std::endl;
-	std::cout << "Time to process a range of: \t" << ac - 1 << " elements with std::vector : \t" << 100.0 * (vec_end_time - vec_begin_time) / CLOCKS_PER_SEC << " us" << std::endl;
-	std::cout << "Time to process a range of: \t" << ac - 1 << " elements with std::list : \t" << 100.0 * (list_end_time - list_begin_time) / CLOCKS_PER_SEC << " us" << std::endl;
+	std::cout << "Time to process a range of\t" << ac - 1 << " elements with std::vector :\t" << 100.0 * (vec_end_time - vec_begin_time) / CLOCKS_PER_SEC << " us" << std::endl;
+	std::cout << "Time to process a range of\t" << ac - 1 << " elements with std::list :\t" << 100.0 * (list_end_time - list_begin_time) / CLOCKS_PER_SEC << " us" << std::endl;
 
 	return (0);
 }
