@@ -1,4 +1,4 @@
-NAME			= Bitcoin
+NAME			= Btc
 SRC				= main.cpp Utils.cpp 
 OBJ				= $(SRC:.cpp=.o)	
 

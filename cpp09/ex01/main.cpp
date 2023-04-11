@@ -19,7 +19,7 @@ int ft_operators(int x, int y, char op)
     if (op == '*')
         return(y * x);
     if (op == '/'){
-        if(x == 0)
+        if(x == 0 || y == 0)
         {
             std::cout << "Error 120" << std::endl;
             exit(1);
@@ -28,7 +28,6 @@ int ft_operators(int x, int y, char op)
     }
     return (0);
 }
-
 
 int main(int ac, char **av)
 {
@@ -41,7 +40,8 @@ int main(int ac, char **av)
     
     if(av[1])
         in  = av[1];
-    if(ac == 1 || in.empty() || !in.find_first_not_of("0123456789*/+-"))
+    
+    if(ac == 1 || in.empty() || in.find_first_of( "0123456789+-*/" ) == std::string::npos)
     {
         std::cout << "Error" << std::endl;
         return (0);

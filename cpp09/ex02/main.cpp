@@ -6,6 +6,61 @@
 #include<sstream>
 #include<ctime>
 
+template <typename ForwardIterator>
+void merge(ForwardIterator first, ForwardIterator mid, ForwardIterator last) {
+    typedef typename std::iterator_traits<ForwardIterator>::value_type value_type;
+    std::vector<value_type> temp(std::distance(first, last));
+    ForwardIterator i = first, j = mid, k = temp.begin();
+
+    while (i != mid && j != last) {
+        if (*i < *j)
+            *k++ = *i++;
+        else
+            *k++ = *j++;
+    }
+
+    while (i != mid)
+        *k++ = *i++;
+
+    while (j != last)
+        *k++ = *j++;
+
+    std::copy(temp.begin(), temp.end(), first);
+}
+
+template <typename ForwardIterator>
+void insertion_sort(ForwardIterator first, ForwardIterator last) {
+    typedef typename std::iterator_traits<ForwardIterator>::value_type value_type;
+    for (ForwardIterator i = first; i != last; ++i) {
+        value_type key = *i;
+        ForwardIterator j = i;
+        while (j != first && *(j - 1) > key) {
+            *j = *(j - 1);
+            --j;
+        }
+        *j = key;
+    }
+}
+
+template <typename RandomAccessIterator>
+void merge_insertion_sort(RandomAccessIterator first, RandomAccessIterator last, int threshold) {
+    typedef typename std::iterator_traits<RandomAccessIterator>::difference_type diff_type;
+    if (last - first > threshold) {
+        RandomAccessIterator mid = first + (last - first) / 2;
+        merge_insertion_sort(first, mid, threshold);
+        merge_insertion_sort(mid, last, threshold);
+        merge(first, mid, last);
+    } else {
+        insertion_sort(first, last);
+    }
+}
+
+template <typename Container>
+void merge_insertion_sort(Container& c, int threshold) {
+    typedef typename Container::iterator iterator;
+    merge_insertion_sort(c.begin(), c.end(), threshold);
+}
+///////////////////////////////////////////-------------------/////////////////////////////
 
 int ft_error(char *s)
 {
@@ -46,14 +101,14 @@ int main(int ac, char **av)
 	//
 	const std::clock_t vec_begin_time = std::clock();
 	//
-	sort(vec.begin(), vec.end());
+	merge_insertion_sort(vec,10);
 	//
 	const std::clock_t vec_end_time = std::clock();
 	//
 
 
 	const std::clock_t list_begin_time = std::clock();
-	list.sort();
+	merge_insertion_sort(list,10);
 	const std::clock_t list_end_time = std::clock();
 
 

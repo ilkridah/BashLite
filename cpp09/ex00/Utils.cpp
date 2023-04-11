@@ -12,12 +12,6 @@ bool isLeapYear(int year) {
     }
 }
 
-std::string remove_white(std::string str)
-{
-	std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' ');
-	str.erase(end_pos, str.end());
-	return str;
-}
 
 bool is_date_valide(std::string date)
 {
@@ -62,8 +56,7 @@ void readInput(const std::string& fileName, std::map<std::string, double> &mapdD
 	std::ifstream file;
 
 	file.open(fileName.c_str());
-	if (!file.is_open() || file.bad())
-		throw std::bad_exception();
+	if (!file.is_open() || file.bad()) {std::cout << "Error: bad file !!" << std::endl; return ;}
 	std::getline(file, line);
 
 	if(line != "date | value")
@@ -84,6 +77,7 @@ void readInput(const std::string& fileName, std::map<std::string, double> &mapdD
 			std::cout << "Error: bad input 1 => " << line << std::endl;
 			continue ;
 		}
+		if(!line.find_first_not_of("-0123456789")){std::cout << "Error: bad input last => " << line << std::endl; continue ;}
 		std::istringstream ss(line);
 		double d;
 		if(ss >> d && ss.eof())
@@ -117,8 +111,8 @@ void readData(const std::string& fileName, std::map<std::string, double> &mapDat
 	std::ifstream file;
 
 	file.open(fileName.c_str());
-	if (!file.is_open() || file.bad())
-		throw std::bad_exception();
+	if (!file.is_open() || file.bad()){std::cout << "Error: bad file !!" << std::endl; return ;}
+		
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
