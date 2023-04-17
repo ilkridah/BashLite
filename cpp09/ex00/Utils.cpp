@@ -1,5 +1,13 @@
 #include "BitcoinExchange.hpp"
 
+bitcoinExchange::bitcoinExchange() {}
+bitcoinExchange::~bitcoinExchange() {}
+bitcoinExchange::bitcoinExchange(const bitcoinExchange &src) { *this = src; }
+bitcoinExchange &bitcoinExchange::operator=(const bitcoinExchange &rhs) {
+	if (this != &rhs) {}
+	return *this;
+}
+
 bool isLeapYear(int year) {
     if (year % 4 != 0) {
         return false;
@@ -51,7 +59,7 @@ bool is_date_valide(std::string date)
     return true;
 }
 
-void readInput(const std::string& fileName, std::map<std::string, double> &mapdData) {
+void bitcoinExchange::readInput(const std::string& fileName, std::map<std::string, double> &mapdData) {
 	std::string line;
 	std::ifstream file;
 
@@ -77,7 +85,9 @@ void readInput(const std::string& fileName, std::map<std::string, double> &mapdD
 			std::cout << "Error: bad input 1 => " << line << std::endl;
 			continue ;
 		}
-		if(!line.find_first_not_of("-0123456789")){std::cout << "Error: bad input last => " << line << std::endl; continue ;}
+		if(!line.find_first_not_of("-+0123456789")){std::cout << "Error: bad input last => " << line << std::endl; continue ;}
+		if(line.back() == '.'){std::cout << "Error: bad input for => " << line << std::endl;continue ;}
+			
 		std::istringstream ss(line);
 		double d;
 		if(ss >> d && ss.eof())
@@ -87,7 +97,7 @@ void readInput(const std::string& fileName, std::map<std::string, double> &mapdD
 			else if (d > 1000)
 				std::cout << "Error: number is too large." << std::endl;
 			else
-				std::cout << temp << " => " << d << " = " << findValue(mapdData, temp) * d << std::endl;
+				std::cout << temp << " => " << d << " = " << bitcoinExchange::findValue(mapdData, temp) * d << std::endl;
 		}
 		else
 			std::cout << "Error: bad input jijijii => " << line << std::endl;
@@ -96,17 +106,17 @@ void readInput(const std::string& fileName, std::map<std::string, double> &mapdD
 }
 
 
-double findValue(std::map<std::string, double> &mapData, const std::string& date)
+double bitcoinExchange::findValue(std::map<std::string, double> &mapData, const std::string& date)
 {
 	std::map<std::string, double>::iterator it;
 	it = mapData.lower_bound(date);
-	if (it != mapData.begin() && it->first != date)
+	if (it != mapData.begin() && it->first != date){
 		it--;
+	}
 	return (it->second);
 }
 
-
-void readData(const std::string& fileName, std::map<std::string, double> &mapData) {
+void bitcoinExchange::readData(const std::string& fileName, std::map<std::string, double> &mapData) {
 	std::string line;
 	std::ifstream file;
 

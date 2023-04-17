@@ -8,7 +8,7 @@ RM				= rm -f
 
 all:	$(NAME)
 
-$(NAME):		$(OBJ)
+$(NAME):		$(OBJ) RPN.hpp
 				$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 clean:
 				$(RM) $(OBJ)  

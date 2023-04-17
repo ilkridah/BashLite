@@ -1,5 +1,5 @@
 NAME			= PmergeMe
-SRC				= main.cpp  
+SRC				= main.cpp deque.cpp vector.cpp
 OBJ				= $(SRC:.cpp=.o)	
 
 CC				= c++
@@ -8,7 +8,7 @@ RM				= rm -f
 
 all:	$(NAME)
 
-$(NAME):		$(OBJ)
+$(NAME):		$(OBJ) PmergeMe.hpp
 				$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 clean:
 				$(RM) $(OBJ)  

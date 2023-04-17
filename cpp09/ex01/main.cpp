@@ -1,7 +1,13 @@
-#include<iostream>
-#include<cmath>
-#include<stack>
-#include<climits>
+#include "RPN.hpp"
+
+RPN::RPN(){}
+RPN::~RPN(){}
+RPN::RPN(const RPN &src) { *this = src; }
+RPN &RPN::operator=(const RPN &rhs) {
+    if (this != &rhs) {}
+    return *this;
+}
+
 
 int is_operator(char op)
 {
@@ -21,7 +27,7 @@ int ft_operators(int x, int y, char op)
     if (op == '/'){
         if(x == 0 || y == 0)
         {
-            std::cout << "Error 120" << std::endl;
+            std::cout << "Error " << std::endl;
             exit(1);
         }
         return(y / x);
@@ -43,7 +49,7 @@ int main(int ac, char **av)
     
     if(ac == 1 || in.empty() || in.find_first_of( "0123456789+-*/" ) == std::string::npos)
     {
-        std::cout << "Error" << std::endl;
+        std::cout << "Error " << std::endl;
         return (0);
     }
       
@@ -55,7 +61,7 @@ int main(int ac, char **av)
         {
             if(st.size() < 2)
             {
-                std::cout << "Error 122" << std::endl;
+                std::cout << "Error " << std::endl;
                 exit(1);
             }
             x  = st.top();
@@ -64,12 +70,13 @@ int main(int ac, char **av)
             st.pop();
             st.push(ft_operators(x, y, *iter));
         }
-        else if(isdigit(*iter))
+        else if(isdigit(*iter)){
                 st.push(*iter - '0');
+        }
     }
     if(st.size() > 1)
     {
-        std::cout << "Error 124" << std::endl;
+        std::cout << "Error " << std::endl;
         exit(1);
     }
     res = st.top();

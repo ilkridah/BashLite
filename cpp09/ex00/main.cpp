@@ -8,7 +8,7 @@ int main(int ac, char **av) {
 		return (1);
 	}
 	std::map<std::string, double> mapData;
-	readData("data.csv", mapData);
-	readInput(av[1], mapData);
+	bitcoinExchange::readData("data.csv", mapData);
+	bitcoinExchange::readInput(av[1], mapData);
 	return 0;
 }
